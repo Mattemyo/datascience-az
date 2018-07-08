@@ -8,11 +8,19 @@ import pandas as pd
 # Importing the dataset
 dataset = pd.read_csv(
     r"C:\Users\Matias\Documents\datascience-az\Part 1 - Data Preprocessing\Data.csv")
+# y is the one to be predicted, X contains the rest of the data
 X = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, 3].values
 
+# taking care of missing data
+from sklearn.preprocessing import Imputer
+# axis = 0 ---> take mean of column
+imputer = Imputer(missing_values = 'NaN', strategy= 'mean', axis=0)
+imputer = imputer.fit(X[:, 1:3])
+X[:, 1:3] = imputer.transform(X[:, 1:3])
+
 # Splitting the dataset into the Training set and Test set
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
 
 # Feature Scaling
