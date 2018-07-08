@@ -55,9 +55,9 @@ regressor_OLS = sm.OLS(endog=y, exog=X_opt).fit()
 X_opt = X[:, [0, 3, 4, 5]]
 regressor_OLS = sm.OLS(endog=y, exog=X_opt).fit()
 # remove idx 3 and repeat
-X_opt = X[:, [0, 4, 5]]
+X_opt = X[:, [0, 3, 5]]
 regressor_OLS = sm.OLS(endog=y, exog=X_opt).fit()
 # remove idx 4 and repeat
-X_opt = X[:, [0, 5]]
+X_opt = X[:, [0, 3]]
 regressor_OLS = sm.OLS(endog=y, exog=X_opt).fit()
 print(regressor_OLS.summary())
