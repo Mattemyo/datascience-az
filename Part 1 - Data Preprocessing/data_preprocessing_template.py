@@ -29,8 +29,7 @@ X = onehotencoder.fit_transform(X).toarray()
 
 # encode yes/no with onehotencoder
 labelencoder_y = LabelEncoder()
-y = labelencoder_X.fit_transform(y)
-
+y = labelencoder_y.fit_transform(y)
 
 # Splitting the dataset into the Training set and Test set
 from sklearn.model_selection import train_test_split
